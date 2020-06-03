@@ -1,0 +1,40 @@
+version: '3'
+volumes:
+  db_data:
+services:
+  mysql:
+    image: 'mysql:5.7'
+    restart: always
+    container_name: db-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: warehouse
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql
+  # App ----------------------------------------------------------------------------------------------------------------
+  backend:
+    build: backend/
+    volumes:
+      - "./backend:/code"
+    # host_port_that_your_OS_sees:port_your_container_exposes.
+    ports:
+      - "${BACKEND_HOST_PORT}:${BACKEND_CONTAINER_PORT}"
+    
+    depends_on: # !!! NOTE Remove this if you remove the respective services
+      - mysql
+    command: 
+      - "./docker.start.sh"
+    
+  client:
+    build: client/
+    volumes:
+      - "./client:/code"
+    # host_port_that_your_OS_sees:port_your_container_exposes
+    ports:
+      - "4201:4200"
+    stdin_open: true # react native bug, needs this open
+    command: "./docker.start.sh"

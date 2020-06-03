@@ -1,0 +1,99 @@
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">WELCOME TO CONTAINER MANAGER</a>
+			</div>
+			<ul class="nav navbar-nav">
+                <li><a href="/" class = "navbarButtons">HOME</a></li>
+				<li><a href="/add" class = "navbarButtons">ADD CONTAINER</a></li>
+				<li><a href="/addinventory" class = "navbarButtons">ADD INVENTORY</a></li>
+				<li><a href="/move" class = "navbarButtons">MOVE Container</a></li>
+			</ul>
+		</div>
+	</nav>
+
+  
+  <div class = "container" style = "margin : 0px 20px 50px 20px;">
+		<div class = "col-xs-12" style = "margin-bottom : 20px;">
+			<h3>LIST OF CONTAINERS IN WAREHOUSE</h3>
+		</div>
+
+		<div class = "row"  >
+			<div class = "col-lg-3 col-md-3" *ngFor="let item of present_containers" >
+				<div class = "card">
+					<div class = "cardBody">
+						<h5>{{item.label}}</h5>
+						<button type="button" (click)="view_detail(item)" class="btn" data-toggle="modal" data-target="#myModal">View Details</button>
+					
+						<button type="button" (click)="deletecontainer(item.id)" class="btn" style="margin-top: 5px;">Delete Container</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class = "container" style = "margin : 0px 20px 0px 20px;">
+		<div class = "col-xs-12" style = "margin-bottom : 20px;">
+			<h3>LIST OF INVENTORY IN WAREHOUSE</h3>
+		</div>
+
+		<div class = "row">
+			<div class = "col-lg-3 col-md-3" *ngFor="let item of present_inventories" >
+				<div class = "card">
+					<div class = "cardBody">
+						<h5>{{item.label}}</h5>
+						<button type="button" (click)="view_detail(item)" class="btn" data-toggle="modal" data-target="#myModal2">View Details</button>
+						<button type="button" (click)="deleteinventory(item.id)" class="btn" style="margin-top: 5px;">Delete Inventory</button>
+				  </div>
+				</div>
+			</div>
+	
+	</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+ 
+    <div class="modal-content" *ngIf="present_c">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >{{present_c.label}}</h4>
+      </div>
+      <div class="modal-body">
+		<p>Container Label : {{present_c.label}}</p>
+		<p>Container Hold Type:{{present_c.hold_type}}</p>
+		<p>Parent Container:{{present_c.parent}}</p>
+		<p>{{present_c.hold_type}} ids it holds:{{present_c.hold_id}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  
+   
+	  <div class="modal-content" *ngIf="present_c">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title" >{{present_c.label}}</h4>
+		</div>
+		<div class="modal-body">
+		  <p>Inventory Label : {{present_c.label}}</p>
+		  <p>Parent Container:{{present_c.parent}}</p>
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+  
+	</div>
+  </div>

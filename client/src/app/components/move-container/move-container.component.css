@@ -1,0 +1,17 @@
+label {
+    display: block;
+    width: 20em;
+    margin: 0.5em;
+    margin-left: 15em;
+    color: #607D8B;
+    font-weight: bold;
+  }
+  button {
+    font-family: Arial;
+    margin-left: 15em;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
