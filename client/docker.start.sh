@@ -8,5 +8,4 @@
 # Setup your dependencies with `npm install` etc.
 
 # Add your `npm start` or such command here.
-npm install 
 ng serve --host 0.0.0.0

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
-import {Container } from '../../Models/container';
+import {Container } from '../../models/container';
 
-import {toselect} from '../../Models/container';
+import {toselect} from '../../models/container';
 import { ContainerService } from 'src/app/services/container.service';
 @Component({
   selector: 'app-move-container',
@@ -51,6 +51,7 @@ error=false;
   this.containerservice.getposiblemoveablecontainer(id).subscribe((data:any)=>{
     if(data.length==0){
       this.str="NO EMPTY CONTINER MATCHING THE REQUIRMENT LEFT"
+      this.container_final=[];
     }
     else{
       this.str="Choose your Destination Container";

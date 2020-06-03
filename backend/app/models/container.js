@@ -447,7 +447,7 @@ Container.possiblemovalecontainers=(id,result)=>{
       console.log(data);
      var s=data.items_under.join(',');
      console.log(s);
-     sql.query("select label,id from containerr where id NOT IN("+s+") and hold_type=1",(err,data)=>{
+     sql.query("select label,id from container where id NOT IN("+s+") and hold_type=1",(err,data)=>{
        if(err){
          result(err,null);
        }

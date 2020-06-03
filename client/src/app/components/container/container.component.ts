@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContainerService } from 'src/app/services/container.service';
-import {Container } from '../../Models/container';
-import {Inventory } from '../../Models/inventory';
+import {Container } from '../../models/container';
+import {Inventory } from '../../models/inventory';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { AlertService } from 'src/app/_alert';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -8,5 +8,5 @@
 # Setup your dependencies with `bundle install` or `pip install -r requirements.txt` etc.
 
 # Add your `rails s` or `./manage.py runserver` or such command here.
-npm install
+
 node app.js

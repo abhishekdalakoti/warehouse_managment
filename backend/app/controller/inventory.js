@@ -38,3 +38,27 @@ exports.getInventory = (req, res) => {
   
     });
   }
+  exports.deleteInventory = (req, res) => {
+
+    var id = req.params.id;
+    Inventory.deleteInventory(id, (err, data) => {
+      if (err) {
+        if (err.message) {
+          res.status(400).send({
+            message: err.message
+          })
+        }
+        else {
+  
+          res.status(500).send({
+            message: "Error deleting Container with id " + req.params.id
+          });
+        }
+      }
+      else {
+        console.log(data.data);
+        res.status(200).send({"data":"Success"});
+      }
+    });
+  
+  }

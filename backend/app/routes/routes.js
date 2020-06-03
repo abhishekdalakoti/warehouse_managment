@@ -12,4 +12,5 @@ module.exports = app => {
   app.post("/inventory", inventory.createinventory);
   app.get("/inventory",inventory.getInventory);
   app.get('/possiblemovablecontainers/:id',containers.possiblemovablecontainers);
+  app.get("/deleteinventory/:id",inventory.deleteInventory)
 };
